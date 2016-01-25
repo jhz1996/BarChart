@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <title></title>
+</head>
+<style>
+#originDiv{
+ 
+/*border-width:1px;*/
+ width:220px; 
+ height:180px !important;
+ background-color:white ; 
+ text-indent:8px; 
+ color:white; 
+ display:inline;
+    /*overflow:auto;*/ 
+    max-width:220px; 
+    margin-top:65px; 
+
+    position:absolute;
+    left:407px;
+    /*max-height:500px*/
+                       
+}
+hr{
+    margin-top:-5px;
+}
+p{
+    left:400px;
+    top:263px;
+}
+
+    .numberCircle {
+	border-radius: 50%;
+	behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+	width: 18px;
+	height: 18px;
+	/*padding: 4px;*/
+	background: #FF9900;
+	/*border: 2px;*/
+	color: #fff;
+	text-align: center;
+	font: 16px Arial, sans-serif;
+}
+
+hr{
+    color:#FCFCFC;
+}
+
+.bar {
+	position: relative;
+	left: 20px;
+}
+.nestedDiv {
+	margin: 4px;
+}
+
+ table.dataTable {
+            border-width: 1px;
+            border-spacing: 2px;
+            border-style: outset;
+            border-color: #FFCCCC;
+            border-collapse: collapse;
+            
+        }
+
+            table.dataTable th {
+                border-width: 1px;
+                padding: 1px;
+                border-style: inset;
+                border-color: #FFCCCC;
+                
+
+            }
+
+            table.dataTable td {
+                border:0;
+                
+                padding: 1px;
+                border-style: inset;
+                border-color: #FFCCCC;
+                
+
+            }
+
+            table.dataTable tr{
+                border: 1px solid #FFCCCC;
+            }
+
+</style>
+<body>
+    <div style='position:absolute;z-index:-1;left:0;top:0;' width="661" height="768">
+        <img src='res/whereWeLiveWhiteSace.png' width="661" height="768" style="z-index:-1;"/>
+    </div>
+  
+    <select id="category">
+        <option value="Transportation">Transportation</option>
+    </select>
+
+    <select id="method">
+        <option value="bikelane">Bike Lanes</option>
+
+    </select>
+
+    <br />
+
+        <button id="btn1" onclick="tableToArray()" type="submit">Create Chart</button>
+
+    <div id="titleDiv" align="center"></div>
+    <div id="descriptionDiv" align="center"></div>
+    <div id="originDiv">
+
+        <hr align="left" style="height:160px; position:absolute; margin-left:3px;" width="1">
+        <hr width="1" style="margin-left:127px; position:absolute ;height:160px">
+
+        <hr width="1" style="margin-left:254px; position:absolute;height:160px;" />
+        <hr width="251" align="left" z-index="-1"; style="top:150px ; position:absolute; margin-left:4px;">
+   
+
+    </div>
+    <p align="left"  style="word-spacing: 105px; position:absolute; margin-left:5px" id="xLabel"></p>
+
+    <!--<table id="tab1" border="1" style="border-color:#FFCCCC" cellpadding="2p">
+        <tr class="row">
+            <td><div class="numberCircle" style="float: left; ">1</div></td>
+            <td><div style="float: left;padding-left: 50px; padding-top: 12px; padding-right: 50px; width: 50px;">Soulsville</div></td>
+            <td><div style="float: left; padding-top: 12px; width: 50px;">2.34</div></td>
+        </tr>
+        <tr class="row">
+            <td style="width:50px"><div class="numberCircle" style="float: left; ">2</div></td>
+            <td><div style="float: left;padding-left: 50px; padding-top: 12px; padding-right: 50px; width: 100px;">Orange Mound</div></td>
+            <td><div style="float: left; padding-top: 12px; width: 100px;">5.10</div></td>
+        </tr>
+
+        <tr class="row">
+            <td><div class="numberCircle" style="float: left; ">3</div></td>
+            <td><div style="float: left;padding-left: 50px; padding-top: 12px; padding-right: 50px; width: 100px;">Puppyville</div></td>
+            <td><div style="float: left; padding-top: 12px; width: 100px;">15</div></td>
+        </tr>
+
+    </table>-->
+    <table bgcolor="#F6F6F6" class="dataTable" id="tab1" style="border-color:#FFCCCC; background-color:#F6F6F6;  margin-top:260px; margin-left:397px; border-style: solid;">
+        <tr class="row" style="margin-bottom:3px; margin-top:3px">
+            <td><div class="numberCircle" style="float: left; ">1</div></td>
+            <td><div style="float: left; ">Soulsville</div></td>
+            <td><div style="float: left; margin-left:83px; margin-right:10px;">2.34</div></td>
+        </tr>
+        <tr class="row">
+            <td style="width:30px"><div class="numberCircle" style="float: left; ">2</div></td>
+            <td><div style="float: left;">Orange Mound</div></td>
+            <td><div style="float: left; margin-left:83px; margin-right:10px; ">5.10</div></td>
+        </tr>
+
+        <tr class="row">
+            <td><div class="numberCircle" style="float: left; ">3</div></td>
+            <td><div style="float: left;">Puppyville</div></td>
+            <td><div style="float: left; margin-left:83px; margin-right:10px;">15</div></td>
+        </tr>
+
+        <tr class="row">
+            <td><div class="numberCircle" style="float: left; ">4</div></td>
+            <td><div style="float: left;">Flounder Town</div></td>
+            <td><div style="float: left; margin-left:83px; margin-right:10px;">6</div></td>
+        </tr>
+
+    </table>
+    <script>
+        var table = document.getElementById("tab1");
+        var bars = 0;
+        var count = 0;
+        function incrementCount() {
+            count++;
+
+            if (count > 1) {
+
+                throw new Error("Something went badly wrong!");
+            }
+
+        }
+
+    function tableToArray() {
+        var category = document.getElementById("category").value;
+        var method = document.getElementById("method").value;
+        var maxCellValue = 0;
+        var table = document.getElementById("tab1");
+       
+        var u = findMax();
+        var coord = [], data = [];
+
+        var arr = [];
+        for (var i = 0, rowsLength = table.rows.length; i < rowsLength; i++) {
+            var temp = [];
+            var row = table.rows[i];
+            for (var j = 0, cellsLength = row.cells.length; j < cellsLength; j++) {
+
+                if (isNaN(table.rows[i].cells[j].textContent)) {
+                    temp.push(table.rows[i].cells[j].textContent);
+
+                }
+                else {
+                    temp.push(Number(table.rows[i].cells[j].textContent));
+                }
+            }
+            arr.push(temp);
+
+        }
+
+        for (var i = 0; i <= arr.length; i++) {
+            var maxAmt = 20;
+            var number = arr[i][2];
+            var innerDiv = document.createElement('div');
+            var barLength = number * 100 / maxAmt;
+            innerDiv.style.backgroundColor = "#F76E00";
+            innerDiv.className = "nestedDiv";
+            innerDiv.style.width = "0%";
+            var startDiv = document.getElementById('originDiv');
+            startDiv.appendChild(innerDiv);
+            $(innerDiv).animate({ width: barLength + "%" }, 500);
+            innerDiv.innerHTML = i + 1;
+
+            //innerDiv.style.width = barLength + "%";
+            
+            bars=bars+1;
+            if (i == arr.length-1) {
+                var innerDiv = document.createElement('div');
+                var barLength = findAvg() * 100 / maxAmt;
+                innerDiv.className = "nestedDiv";
+                innerDiv.id="test";
+                innerDiv.style.backgroundColor = "#B5BF00";
+                innerDiv.innerHTML = "R";
+                innerDiv.style.width = "0%";
+                ////$('#test').animate({ width: barLength + '%' }, 500);
+                //$('#test').animate({ width: "0" }, 800);
+                //innerDiv.style.width = barLength + "%";
+                startDiv.appendChild(innerDiv);
+                generateLabel();
+                bars = bars + 1;
+                $('#test').animate({ width: barLength+"%" }, 500);
+                //$('#test').animate({ width: "70%" }, 0);
+                //displayGraph();
+            }
+
+            //$('#btn1').attr('disabled', 'disabled');
+            $("#btn1").hide();
+  
+        }
+
+    }
+
+    //function displayGraph(){
+        
+    //    if (bars>0) {
+    //        // Animate the height using the jQuery animate() function
+    //        $('#test').animate({
+    //            height: bars[i].height
+    //        }, 800);
+    //        // Wait the specified time, then run the displayGraph() function again for the next bar
+    //        barTimer = setTimeout(function() {
+    //            i++;
+    //            displayGraph(bars, i);
+    //        }, 100);
+    //        bars--;
+    //    }
+    //}
+
+
+
+    
+
+    function findAvg() {
+        var table = document.getElementById("tab1");
+        var sum = 0;
+        
+        for (var i = 0, rowsLength = table.rows.length; i < rowsLength; i++) {
+            var row = table.rows[i];
+            var value = Number(row.cells[2].textContent);
+            sum = sum + value;
+            
+        }
+        return sum / rowsLength;
+    }
+
+    
+
+    function findMax() {
+        var maxCellValue = 0;
+        for (var i = 0, rowsLength = table.rows.length; i < rowsLength; i++) {
+            var row = table.rows[i];
+            //for (var j = 0, cellsLength = row.cells.length; j < cellsLength; j++) {
+                var cellValue = Number(row.cells[2].textContent);  //what just happened without number it didnt calculate correctly
+                var u = cellValue * 2;
+                var c =  cellValue> 7.0;
+
+                if (cellValue > maxCellValue) {
+                    maxCellValue = cellValue;
+                }
+
+            
+
+        }
+        return maxCellValue;
+    }
+    function generateLabel() {
+        var graphLabel = "0" + "      " + (findMax() / 2).toString() + "        " + findMax().toString();
+        document.getElementById("xLabel").innerHTML = graphLabel;
+        return graphLabel;
+    }
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
